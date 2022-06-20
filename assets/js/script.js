@@ -56,4 +56,7 @@ function writeAnswer() {
   document.querySelector("#answer4").textContent = questions[questionPosition].choices[3];
 }
 
+// function add event listener to each question 
+// grab text from element "event.target.textContent"
+
 document.querySelector("#startButton").addEventListener("click",startGame);
