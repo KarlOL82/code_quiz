@@ -1,5 +1,5 @@
 var timeEl = document.querySelector("#timer");
-var countDown = 0;
+var countDown = 60;
 
 var score = 0;
 
@@ -45,7 +45,20 @@ function startGame() {
 
 
  function startTimer() {
-
+    remainingTime = startingTime
+    timeDisplay.textContent = formatSeconds(remainingTime)
+    
+    timer = setInterval(function() {
+        remainingTime--
+    
+        if (remainingTime < 0) {
+            clearInterval(timer)
+            displayGetNamePage()
+        } else {
+            timeDisplay.textContent = formatSeconds(remainingTime)
+        }
+    
+    }, 1000)
  }
 
 function writeAnswer() {
@@ -56,7 +69,13 @@ function writeAnswer() {
   document.querySelector("#answer4").textContent = questions[questionPosition].choices[3];
 }
 
+function answerQuestion() {
+
+}
+
 // function add event listener to each question 
 // grab text from element "event.target.textContent"
 
 document.querySelector("#startButton").addEventListener("click",startGame);
+
+document.querySelector
