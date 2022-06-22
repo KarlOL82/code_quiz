@@ -1,6 +1,6 @@
 var timeEl = document.querySelector("#timer");
-var countDown = 60;
-
+var countDown = 0;
+var timeDisplay = document.getElementById("#timer")
 var score = 0;
 
 var questionPosition = 0;
@@ -40,28 +40,30 @@ function startGame() {
     startTimer();
    document.querySelector(".intro").classList.add("hidden");
    document.querySelector("#question").classList.remove("hidden");
-    writeAnswer();
+    showQuestion();
 }
 
 
+
+
  function startTimer() {
-    remainingTime = startingTime
-    timeDisplay.textContent = formatSeconds(remainingTime)
+    remainingTime = countDown
+    timeDisplay.textContent = showSeconds(remainingTime)
     
     timer = setInterval(function() {
         remainingTime--
     
         if (remainingTime < 0) {
             clearInterval(timer)
-            displayGetNamePage()
+            showQuestion()
         } else {
-            timeDisplay.textContent = formatSeconds(remainingTime)
+            timeDisplay.textContent = showSeconds(remainingTime)
         }
     
     }, 1000)
  }
 
-function writeAnswer() {
+function showQuestion() {
   document.querySelector("#questionText").textContent = questions[0].q;
   document.querySelector("#answer1").textContent = questions[questionPosition].choices[0];
   document.querySelector("#answer2").textContent = questions[questionPosition].choices[1];
@@ -70,6 +72,10 @@ function writeAnswer() {
 }
 
 function answerQuestion() {
+
+}
+
+function showSeconds() {
 
 }
 
