@@ -1,77 +1,88 @@
-var timeEl = document.querySelector("#timer");
-var countDown = 0;
-var timeDisplay = document.getElementById("#timer")
+
+var countDown = 60;
+var timeDisplay = document.getElementById("timer")
 var score = 0;
-
+var startButton = document.getElementById("#startButton")
 var questionPosition = 0;
-
+var btn1 = document.getElementById("answer1")
+var btn1 = document.getElementById("answer2")
+var btn1 = document.getElementById("answer3")
+var btn1 = document.getElementById("answer4")
 
 var questions = [
-  { q: "Which of the following is not a data type in Javascript?",
+  { questionText: "Which of the following is not a data type in Javascript?",
     choices: ["1. Boolean", "2. String", "3. Undefined", "4. Number"],
-    a: "3. Undefined"
+    answerText: "3. Undefined"
 },
 
-{   q: "What is the correct HTML element to place Javascript code inside of?",
+{   questionText: "What is the correct HTML element to place Javascript code inside of?",
     choices: ["1. <script>", "2. <div>", "3. <js>", "4. <Body>" ],
-    a: "1. <script>",
+    answerText: "1. <script>",
 },
 
-{   q: "What punctutation does an array go inside of",
+{   questionText: "What punctutation does an array go inside of",
     choices: ["1. Quotation marks", "2. Curly Brackets", "3. Parentheses", "4. Square Brackets"],
-    a: "4. Square Brackets"
+    answerText: "4. Square Brackets"
 },
 
-{   q: "Which is the correct extension for a Javascript file?",
+{   questionText: "Which is the correct extension for a Javascript file?",
     choices: ["1. .js", "2. .java", "3. .jscript", "4. .script"],
-    a: "1. .js"
+    answerText: "1. .js"
 },
 
-{   q: "What index position is assigned to the first item in an array?",
+{   questionText: "What index position is assigned to the first item in an array?",
     choices: ["1. 1", "2. x", "3. i", "4. 0"],
-    a: "4. 0"
+    answerText: "4. 0"
 },
 ]
 var currentQuestion = questions[questionPosition];
-
+document.querySelector("#startButton").addEventListener("click",startGame);
 
 
 function startGame() {
+   console.log("game started");
     startTimer();
    document.querySelector(".intro").classList.add("hidden");
    document.querySelector("#question").classList.remove("hidden");
     showQuestion();
 }
 
+function startTimer() {
+        
+     setInterval(function() {
 
-
-
- function startTimer() {
-    remainingTime = countDown
-    timeDisplay.textContent = showSeconds(remainingTime)
-    
-    timer = setInterval(function() {
-        remainingTime--
-    
-        if (remainingTime < 0) {
-            clearInterval(timer)
-            showQuestion()
+        if (countDown <=0) {
+            // show score page and clear interval
         } else {
-            timeDisplay.textContent = showSeconds(remainingTime)
-        }
+            showQuestion(); 
+            console.log("countDown", countDown)
+            countDown -=1
+            document.querySelector("#timer").innerHTML = countDown
+        }   
     
     }, 1000)
  }
 
 function showQuestion() {
-  document.querySelector("#questionText").textContent = questions[0].q;
+  document.querySelector("#questionText").textContent = questions[0].questionText;
   document.querySelector("#answer1").textContent = questions[questionPosition].choices[0];
   document.querySelector("#answer2").textContent = questions[questionPosition].choices[1];
   document.querySelector("#answer3").textContent = questions[questionPosition].choices[2];
   document.querySelector("#answer4").textContent = questions[questionPosition].choices[3];
 }
 
+
+document.querySelector("#answer1").addEventListener("click",answerQuestion);
+document.querySelector("#answer2").addEventListener("click",answerQuestion);
+document.querySelector("#answer3").addEventListener("click",answerQuestion);
+document.querySelector("#answer4").addEventListener("click",answerQuestion);
+
+// attach event listener to each answer button
+
 function answerQuestion() {
+ var questionAnswered = this.getAttribute("data-index")
+ console.log(this);
+ console.log("questionAnswered",questionAnswered)
 
 }
 
@@ -79,9 +90,17 @@ function showSeconds() {
 
 }
 
-// function add event listener to each question 
+
 // grab text from element "event.target.textContent"
 
-document.querySelector("#startButton").addEventListener("click",startGame);
+
 
 document.querySelector
+
+// stringify name and scorekey/value (score = )
+var data = [
+    {initials:"Initials", score:"Score"}
+]
+
+localStorage.getItem(data)
+
