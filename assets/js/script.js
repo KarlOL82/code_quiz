@@ -2,12 +2,14 @@
 var countDown = 60;
 var timeDisplay = document.getElementById("timer")
 var score = 0;
-var startButton = document.getElementById("#startButton")
+var startButton = document.getElementById("#startButton");
 var questionPosition = 0;
-var btn1 = document.getElementById("answer1")
-var btn1 = document.getElementById("answer2")
-var btn1 = document.getElementById("answer3")
-var btn1 = document.getElementById("answer4")
+var questionDisplay = document.getElementById("questionText");
+var btn1 = document.getElementById("answer1");
+var btn1 = document.getElementById("answer2");
+var btn1 = document.getElementById("answer3");
+var btn1 = document.getElementById("answer4");
+
 
 var questions = [
   { questionText: "Which of the following is not a data type in Javascript?",
@@ -45,6 +47,7 @@ function startGame() {
    document.querySelector(".intro").classList.add("hidden");
    document.querySelector("#question").classList.remove("hidden");
     showQuestion();
+    return;
 }
 
 function startTimer() {
@@ -54,22 +57,30 @@ function startTimer() {
         if (countDown <=0) {
             // show score page and clear interval
         } else {
-            showQuestion(); 
+            showNextQuestion(); 
             console.log("countDown", countDown)
             countDown -=1
             document.querySelector("#timer").innerHTML = countDown
         }   
     
     }, 1000)
- }
+};
+
 
 function showQuestion() {
-  document.querySelector("#questionText").textContent = questions[0].questionText;
+  document.querySelector("#questionText").textContent = questions[questionPosition].questionText;
   document.querySelector("#answer1").textContent = questions[questionPosition].choices[0];
   document.querySelector("#answer2").textContent = questions[questionPosition].choices[1];
   document.querySelector("#answer3").textContent = questions[questionPosition].choices[2];
   document.querySelector("#answer4").textContent = questions[questionPosition].choices[3];
-}
+};
+
+function showNextQuestion() {
+    questionDisplay++;
+    questionPosition++;
+    showQuestion();
+    
+};
 
 
 document.querySelector("#answer1").addEventListener("click",answerQuestion);
@@ -81,21 +92,17 @@ document.querySelector("#answer4").addEventListener("click",answerQuestion);
 
 function answerQuestion() {
  var questionAnswered = this.getAttribute("data-index")
- console.log(this);
- console.log("questionAnswered",questionAnswered)
 
-}
+};
 
-function showSeconds() {
 
-}
-
+ 
 
 // grab text from element "event.target.textContent"
 
 
 
-document.querySelector
+
 
 // stringify name and scorekey/value (score = )
 var data = [
