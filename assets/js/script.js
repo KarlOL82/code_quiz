@@ -12,7 +12,7 @@ var btn1 = document.getElementById("answer4");
 
 
 var questions = [
-  { questionText: "Which of the following is not a data type in Javascript?",
+  { questionText: "Which of the following is NOT a data type in Javascript?",
     choices: ["1. Boolean", "2. String", "3. Undefined", "4. Number"],
     answerText: "3. Undefined"
 },
@@ -47,7 +47,7 @@ function startGame() {
    document.querySelector(".intro").classList.add("hidden");
    document.querySelector("#question").classList.remove("hidden");
     showQuestion();
-    return;
+    
 }
 
 function startTimer() {
@@ -91,7 +91,7 @@ document.querySelector("#answer4").addEventListener("click",answerQuestion);
 // attach event listener to each answer button
 
 function answerQuestion() {
- var questionAnswered = this.getAttribute("data-index")
+ var questionAnswered = this.getAttribute("data-index");
 
 };
 
