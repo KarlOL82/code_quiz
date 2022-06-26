@@ -40,15 +40,18 @@ var questions = [
 var currentQuestion = questions[questionPosition];
 document.querySelector("#startButton").addEventListener("click",startGame);
 
+//for (var i = 0; i < questions.length)
+
 
 function startGame() {
-   console.log("game started");
     startTimer();
    document.querySelector(".intro").classList.add("hidden");
    document.querySelector("#question").classList.remove("hidden");
     showQuestion();
-    
+   
 }
+
+
 
 function startTimer() {
         
@@ -58,7 +61,6 @@ function startTimer() {
             // show score page and clear interval
         } else {
             showNextQuestion(); 
-            console.log("countDown", countDown)
             countDown -=1
             document.querySelector("#timer").innerHTML = countDown
         }   
@@ -82,18 +84,34 @@ function showNextQuestion() {
     
 };
 
+//var showNextQuestion = function (event) {
+   // event.preventDefault();
+//}
 
-document.querySelector("#answer1").addEventListener("click",answerQuestion);
-document.querySelector("#answer2").addEventListener("click",answerQuestion);
-document.querySelector("#answer3").addEventListener("click",answerQuestion);
-document.querySelector("#answer4").addEventListener("click",answerQuestion);
+//document.querySelector("#answer1").addEventListener("click",answerQuestion);
+//document.querySelector("#answer2").addEventListener("click",answerQuestion);
+//document.querySelector("#answer3").addEventListener("click",answerQuestion);
+//document.querySelector("#answer4").addEventListener("click",answerQuestion);
 
 // attach event listener to each answer button
 
-function answerQuestion() {
- var questionAnswered = this.getAttribute("data-index");
+var questionContainer = document.querySelector("#question")
 
-};
+questionContainer.addEventListener("click", function(event) {
+    var questionAnswered = event.target;
+    if (!questionAnswered.matches("button")) return;
+
+    var userAnswer = questionAnswered.dataset.index;
+
+    console.log(userAnswer)
+});
+
+
+
+//function answerQuestion() {
+ //var questionAnswered = this.getAttribute("data-index");
+
+//};
 
 
  
