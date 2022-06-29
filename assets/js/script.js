@@ -40,25 +40,25 @@ var questions = [
 var currentQuestion = questions[questionPosition];
 document.querySelector("#startButton").addEventListener("click",startGame);
 
-//for (var i = 0; i < questions.length)
 
 
 function startGame() {
     startTimer();
-   document.querySelector(".intro").classList.add("hidden");
-   document.querySelector("#question").classList.remove("hidden");
+    document.querySelector(".intro").classList.add("hidden");
+    document.querySelector("#question").classList.remove("hidden");
     showQuestion();
-   
+    
 }
 
 
 
 function startTimer() {
-        
+    
+    
      setInterval(function() {
 
-        if (countDown ==0) {
-            endGame()
+        if (countDown <=0)  {
+            endGame();
         } else {
             
             countDown -=1
@@ -78,9 +78,12 @@ function showQuestion() {
 };
 
 function showNextQuestion() {
-    questionDisplay++;
-    questionPosition++;
+    for (var i = 0; i < questions.length; i++) {
+    if (questions.length < 5); 
+    (questionDisplay++);
+    questionPosition++; 
     showQuestion();
+    };
     
 };
 
