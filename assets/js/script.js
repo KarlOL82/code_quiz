@@ -80,7 +80,7 @@ function showQuestion() {
 function showNextQuestion() {
     for (var i = 0; i < questions.length; i++) {
     if (questions.length < 5); 
-    (questionDisplay++);
+    questionDisplay++;
     questionPosition++; 
     showQuestion();
     };
