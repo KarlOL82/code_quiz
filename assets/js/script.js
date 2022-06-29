@@ -9,32 +9,32 @@ var btn1 = document.getElementById("answer1");
 var btn1 = document.getElementById("answer2");
 var btn1 = document.getElementById("answer3");
 var btn1 = document.getElementById("answer4");
-
+//var correctAnswer = questions[questionPosition].answerText;
 
 var questions = [
-  { questionText: "Which of the following is NOT a data type in Javascript?",
+{   questionText: "Which of the following is NOT a data type in Javascript?",
     choices: ["1. Boolean", "2. String", "3. Undefined", "4. Number"],
-    answerText: "3. Undefined"
+    answerText: "3"
 },
 
 {   questionText: "What is the correct HTML element to place Javascript code inside of?",
     choices: ["1. <script>", "2. <div>", "3. <js>", "4. <Body>" ],
-    answerText: "1. <script>",
+    answerText: "1",
 },
 
 {   questionText: "What punctutation does an array go inside of",
     choices: ["1. Quotation marks", "2. Curly Brackets", "3. Parentheses", "4. Square Brackets"],
-    answerText: "4. Square Brackets"
+    answerText: "4"
 },
 
 {   questionText: "Which is the correct extension for a Javascript file?",
     choices: ["1. .js", "2. .java", "3. .jscript", "4. .script"],
-    answerText: "1. .js"
+    answerText: "1"
 },
 
 {   questionText: "What index position is assigned to the first item in an array?",
     choices: ["1. 1", "2. x", "3. i", "4. 0"],
-    answerText: "4. 0"
+    answerText: "4"
 },
 ]
 var currentQuestion = questions[questionPosition];
@@ -57,10 +57,10 @@ function startTimer() {
         
      setInterval(function() {
 
-        if (countDown <=0) {
-            // show score page and clear interval
+        if (countDown ==0) {
+            endGame()
         } else {
-            showNextQuestion(); 
+            
             countDown -=1
             document.querySelector("#timer").innerHTML = countDown
         }   
@@ -95,22 +95,35 @@ function showNextQuestion() {
 
 // attach event listener to each answer button
 
+
 var questionContainer = document.querySelector("#question")
 
-questionContainer.addEventListener("click", function(event) {
-    var questionAnswered = event.target;
-    if (!questionAnswered.matches("button")) return;
 
+
+questionContainer.addEventListener("click", function(event) {
+    if (this.value!== questions[questionPosition].answerText) {
+        countDown -= 15;
+    }
+    showNextQuestion();
+    var questionAnswered = event.target;
+    if(!questionAnswered.matches("button")) return;
+    
     var userAnswer = questionAnswered.dataset.index;
 
+    //if(userAnswer === correctAnswer) 
+    
     console.log(userAnswer)
 });
 
-
+function endGame() {
+    clearInterval(countDown);
+}
 
 //function answerQuestion() {
- //var questionAnswered = this.getAttribute("data-index");
 
+    
+ //var questionAnswered = this.getAttribute("data-index");
+ //var userAnswer = questionAnswered.dataset.index;
 //};
 
 
