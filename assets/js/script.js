@@ -14,27 +14,27 @@ var btn1 = document.getElementById("answer4");
 var questions = [
 {   questionText: "Which of the following is NOT a data type in Javascript?",
     choices: ["1. Boolean", "2. String", "3. Undefined", "4. Number"],
-    answerText: "3"
+    answerText: "3. Undefined"
 },
 
 {   questionText: "What is the correct HTML element to place Javascript code inside of?",
     choices: ["1. <script>", "2. <div>", "3. <js>", "4. <Body>" ],
-    answerText: "1",
+    answerText: "1. <script>",
 },
 
 {   questionText: "What punctutation does an array go inside of",
     choices: ["1. Quotation marks", "2. Curly Brackets", "3. Parentheses", "4. Square Brackets"],
-    answerText: "4"
+    answerText: "4. Square Brackets"
 },
 
 {   questionText: "Which is the correct extension for a Javascript file?",
     choices: ["1. .js", "2. .java", "3. .jscript", "4. .script"],
-    answerText: "1"
+    answerText: "1. .js"
 },
 
 {   questionText: "What index position is assigned to the first item in an array?",
     choices: ["1. 1", "2. x", "3. i", "4. 0"],
-    answerText: "4"
+    answerText: "4. 0"
 },
 ]
 var currentQuestion = questions[questionPosition];
@@ -78,12 +78,15 @@ function showQuestion() {
 };
 
 function showNextQuestion() {
-    for (var i = 0; i < questions.length; i++) {
-    if (questions.length < 5); 
+    //for (var i = 0; i < questions.length; i++) {
+    if (questions.length < 5) {
     questionDisplay++;
-    questionPosition++; 
+    questionPosition++;
+    //console.log(questions[questionPosition].questionText); 
     showQuestion();
-    };
+    } else if (questions.length >= 5) {
+        endGame();
+    }
     
 };
 
@@ -102,9 +105,8 @@ function showNextQuestion() {
 var questionContainer = document.querySelector("#question")
 
 
-
 questionContainer.addEventListener("click", function(event) {
-    if (this.value!== questions[questionPosition].answerText) {
+    if (this.textContent!== questions[questionPosition].answerText) {
         countDown -= 15;
     }
     showNextQuestion();
@@ -112,9 +114,7 @@ questionContainer.addEventListener("click", function(event) {
     if(!questionAnswered.matches("button")) return;
     
     var userAnswer = questionAnswered.dataset.index;
-
-    //if(userAnswer === correctAnswer) 
-    
+     
     console.log(userAnswer)
 });
 
