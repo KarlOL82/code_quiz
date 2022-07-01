@@ -79,14 +79,12 @@ function showQuestion() {
 
 function showNextQuestion() {
     //for (var i = 0; i < questions.length; i++) {
-    if (questions.length < 5) {
+    if (questions[questionPosition].length < 5) {
     questionDisplay++;
     questionPosition++;
     //console.log(questions[questionPosition].questionText); 
     showQuestion();
-    } else if (questions.length >= 5) {
-        endGame();
-    }
+    } //else endGame()
     
 };
 
