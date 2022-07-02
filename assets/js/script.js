@@ -79,7 +79,7 @@ function showQuestion() {
 
 function showNextQuestion() {
     //for (var i = 0; i < questions.length; i++) {
-    if (questions[questionPosition].length < 5) {
+    if (questions.length <= 5) {
     questionDisplay++;
     questionPosition++;
     //console.log(questions[questionPosition].questionText); 
@@ -104,12 +104,14 @@ var questionContainer = document.querySelector("#question")
 
 
 questionContainer.addEventListener("click", function(event) {
-    if (this.textContent!== questions[questionPosition].answerText) {
-        countDown -= 15;
-    }
+    
     showNextQuestion();
     var questionAnswered = event.target;
     if(!questionAnswered.matches("button")) return;
+
+    if (this.textContent!== questions[questionPosition].answerText) {
+        countDown -= 15;
+    }
     
     var userAnswer = questionAnswered.dataset.index;
      
