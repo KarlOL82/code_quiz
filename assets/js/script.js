@@ -70,11 +70,13 @@ function startTimer() {
 
 
 function showQuestion() {
-  document.querySelector("#questionText").textContent = questions[questionPosition].questionText;
+
+  document.querySelector("#questionText").textContent = questions[questionPosition];
   document.querySelector("#answer1").textContent = questions[questionPosition].choices[0];
   document.querySelector("#answer2").textContent = questions[questionPosition].choices[1];
   document.querySelector("#answer3").textContent = questions[questionPosition].choices[2];
   document.querySelector("#answer4").textContent = questions[questionPosition].choices[3];
+  
 };
 
 function showNextQuestion() {
@@ -83,8 +85,9 @@ function showNextQuestion() {
     questionDisplay++;
     questionPosition++;
     //console.log(questions[questionPosition].questionText); 
-    showQuestion();
-    } //else endGame()
+    showQuestion(); 
+    } 
+    
     
 };
 
