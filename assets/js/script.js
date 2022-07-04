@@ -9,6 +9,7 @@ var btn1 = document.getElementById("answer1");
 var btn1 = document.getElementById("answer2");
 var btn1 = document.getElementById("answer3");
 var btn1 = document.getElementById("answer4");
+
 //var correctAnswer = questions[questionPosition].answerText;
 
 var questions = [
@@ -71,7 +72,7 @@ function startTimer() {
 
 function showQuestion() {
 
-  document.querySelector("#questionText").textContent = questions[questionPosition];
+  document.querySelector("#questionText").textContent = questions[questionPosition].questionText;
   document.querySelector("#answer1").textContent = questions[questionPosition].choices[0];
   document.querySelector("#answer2").textContent = questions[questionPosition].choices[1];
   document.querySelector("#answer3").textContent = questions[questionPosition].choices[2];
@@ -80,13 +81,15 @@ function showQuestion() {
 };
 
 function showNextQuestion() {
-    //for (var i = 0; i < questions.length; i++) {
+    //for (var i = 0; i < questions.length; i++) 
     if (questions.length <= 5) {
     questionDisplay++;
     questionPosition++;
     //console.log(questions[questionPosition].questionText); 
     showQuestion(); 
-    } 
+    } else {
+        endGame()
+    }
     
     
 };
@@ -123,6 +126,9 @@ questionContainer.addEventListener("click", function(event) {
 
 function endGame() {
     clearInterval(countDown);
+    var score = countDown;
+    location.href = "./score.html"  
+    document.querySelector("#score").innerHTML = score;
 }
 
 //function answerQuestion() {
@@ -142,9 +148,9 @@ function endGame() {
 
 
 // stringify name and scorekey/value (score = )
-var data = [
-    {initials:"Initials", score:"Score"}
-]
+//var data = [
+ //   {initials:"Initials", score:"Score"}
+//]
 
-localStorage.getItem(data)
+//localStorage.getItem(data)
 
