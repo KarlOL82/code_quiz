@@ -88,7 +88,7 @@ function showNextQuestion() {
     //console.log(questions[questionPosition].questionText); 
     showQuestion(); 
     } else {
-        endGame()
+        endGame();
     }
     
     
@@ -126,9 +126,10 @@ questionContainer.addEventListener("click", function(event) {
 
 function endGame() {
     clearInterval(countDown);
-    var score = countDown;
-    location.href = "./score.html"  
-    document.querySelector("#score").innerHTML = score;
+    var score = (countDown);
+    location.href = "./score.html";  
+    document.querySelector("#score").textContent = score;
+    console.log("#score");
 }
 
 //function answerQuestion() {
