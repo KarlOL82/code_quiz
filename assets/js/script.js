@@ -84,6 +84,8 @@ function showQuestion() {
 }
 
 function checkAnswer(){
+    if (!questionAnswered.matches("button")) return;
+    var questionAnswered = (this.textContent);
     console.log(this.textContent );
     if (this.textContent !== questions[questionPosition].answerText) {
         console.log("wrong");
@@ -116,9 +118,9 @@ var questionContainer = document.querySelector("#question");
 
 questionContainer.addEventListener("click", function (event) {
   
-  var questionAnswered = event.target;
+   //= event.target;
   
-  if (!questionAnswered.matches("button")) return;
+  
 
   if (this.textContent !== questions[questionPosition].answerText) {
     console.log(questions[questionPosition].answerText);
@@ -128,7 +130,7 @@ questionContainer.addEventListener("click", function (event) {
     console.log(questionPosition);
   }
 
-  var userAnswer = questionAnswered.dataset.index;
+  var userAnswer = questionAnswered.dataset.textContent;
 
   console.log(userAnswer);
   showNextQuestion();
