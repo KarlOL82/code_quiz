@@ -1,20 +1,66 @@
-
+body {
+  background-color: aquamarine;
+}
 
 .hidden {
-    display: none;
-    
+  display: none;
+}
+
+#scoreLink {
+  text-align: right;
+}
+
+#timer {
+  text-align: center;
+  padding: 40px;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.answerBtn {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: blueviolet;
+  font-size: 2rem;
+}
+
+.intro {
+  text-align: center;
+}
+
+#startButton {
+  border-radius: 6px;
+  background-color: greenyellow;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+#question {
+  text-align: center;
 }
 
 #wrong {
-    color: red;
-    font-weight: bold;
-    text-align: center;
-
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  font-size: 2rem;
 }
 
 #correct {
-    color: green;
-    font-weight: bold;
-    text-align: center;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  font-size: 2rem;
 }
 
+#scoreCard {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.input {
+    text-align: center;
+    font-size: 1.5rem;
+}

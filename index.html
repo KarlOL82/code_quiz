@@ -9,10 +9,10 @@
     
 </head>
 <body>
-    <div>
+    <div id="scoreLink">
         <a href="score.html">High Scores</a>
-        <div>
-            Timer: <span id="timer">0</span>
+    <div id="timer">Timer:
+         <span>0</span>
         </div>
     </div>
     
@@ -22,21 +22,28 @@
         </button>
 
         <h1>Welcome to the quiz!</h1>
-        <p>Answer all the questions before time runs out! Answer quickly for the highest score!</p>
+        <h3>Answer all the questions before time runs out! Answer quickly for the highest score!</h3>
     </div>
 
     <div id="question" class="hidden">
         <h1 data-index="0" id="questionText">Question Text</h1>
-        <button data-index="1" id="answer1">Answer 1</button>
-        <button data-index="2" id="answer2">Answer 2</button>
-        <button data-index="3" id="answer3">Answer 3</button>
-        <button data-index="4" id="answer4">Answer 4</button>
+        <button data-index="1" class="answerBtn" id="answer1">Answer 1</button>
+        <button data-index="2" class="answerBtn" id="answer2">Answer 2</button>
+        <button data-index="3" class="answerBtn" id="answer3">Answer 3</button>
+        <button data-index="4" class="answerBtn" id="answer4">Answer 4</button>
     </div>
 
     <div id="showScore" class="hidden"></div>
 
     <div id="wrong" class="hidden">Wrong!</div>
     <div id="correct" class="hidden">Correct!</div>
+
+    <form id="scoreCard" class="hidden" action="./score.html">
+        <label class="input" for="initials">Enter Initials:</label><br>
+        <input class="input" type="text" id="fname" name="fname" value="---"><br>
+        <input class="input" id="subBtn" type="submit" value="Submit">
+      </form>
+
 
 
 

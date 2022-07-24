@@ -8,7 +8,7 @@ var btn1 = document.getElementById("answer1");
 var btn1 = document.getElementById("answer2");
 var btn1 = document.getElementById("answer3");
 var btn1 = document.getElementById("answer4");
-var timeInterval ;
+var timeInterval;
 //var correctAnswer = questions[questionPosition].answerText;
 
 var questions = [
@@ -27,7 +27,12 @@ var questions = [
 
   {
     questionText: "What punctutation does an array go inside of",
-    choices: ["Quotation marks", "Curly Brackets", "Parentheses", "Square Brackets",],
+    choices: [
+      "Quotation marks",
+      "Curly Brackets",
+      "Parentheses",
+      "Square Brackets",
+    ],
     answerText: "Square Brackets",
   },
 
@@ -49,19 +54,19 @@ document.querySelector("#startButton").addEventListener("click", startGame);
 
 function startGame() {
   questionPosition = 0;
-startTimer();
-document.querySelector(".intro").classList.add("hidden");
-document.querySelector("#question").classList.remove("hidden");
-showQuestion();
+  startTimer();
+  document.querySelector(".intro").classList.add("hidden");
+  document.querySelector("#question").classList.remove("hidden");
+  showQuestion();
 }
 
 function startTimer() {
-  timeInterval= setInterval(function () {
+  timeInterval = setInterval(function () {
     if (countDown <= 0) {
       endGame();
     } else {
       countDown -= 1;
-      document.querySelector("#timer").innerHTML = countDown;
+      document.querySelector("#timer").innerHTML =("Timer: ") + countDown;
     }
   }, 1000);
 }
@@ -77,53 +82,54 @@ function showQuestion() {
     questions[questionPosition].choices[2];
   document.querySelector("#answer4").textContent =
     questions[questionPosition].choices[3];
-    document.querySelector("#answer1").addEventListener("click",checkAnswer)
-    document.querySelector("#answer2").addEventListener("click",checkAnswer)
-    document.querySelector("#answer3").addEventListener("click",checkAnswer)
-    document.querySelector("#answer4").addEventListener("click",checkAnswer)
-    
+  document.querySelector("#answer1").addEventListener("click", checkAnswer);
+  document.querySelector("#answer2").addEventListener("click", checkAnswer);
+  document.querySelector("#answer3").addEventListener("click", checkAnswer);
+  document.querySelector("#answer4").addEventListener("click", checkAnswer);
 }
 
-function checkAnswer(){
-    if (!questionAnswered ==("button" )) return;
-    var questionAnswered = (this.textContent);
-    console.log(this.textContent );
-    if (this.textContent !== questions[questionPosition].answerText) {
-      countDown -= 15;
-        console.log("Wrong!");
-        document.querySelector("#wrong").classList.remove("hidden");
-        document.querySelector("#correct").classList.add("hidden");
-        showNextQuestion();
-    } else {
-      console.log("Correct!");
-      document.querySelector("#correct").classList.remove("hidden");
-      document.querySelector("#wrong").classList.add("hidden");
-      showNextQuestion();
-    }
+function checkAnswer() {
+  if (!questionAnswered == "button") return;
+  var questionAnswered = this.textContent;
+  console.log(this.textContent);
+  if (this.textContent !== questions[questionPosition].answerText) {
+    countDown -= 15;
+    console.log("Wrong!");
+    document.querySelector("#wrong").classList.remove("hidden");
+    document.querySelector("#correct").classList.add("hidden");
+    showNextQuestion();
+  } else {
+    console.log("Correct!");
+    document.querySelector("#correct").classList.remove("hidden");
+    document.querySelector("#wrong").classList.add("hidden");
+    showNextQuestion();
+  }
 }
 
 function showNextQuestion() {
-  
-  //for (var i = 0; i < questions.length; i++)
-  if (questions.length <= 5) {
+  // for (var i = 0; i < questions.length; i++)
+  if (questionPosition < questions.length) {
     questionDisplay++;
     questionPosition++;
-    
     showQuestion();
-    
-  } else {
-    endGame();
+  } else if (questionPosition >= questions.length) {
+    endGame(); 
   }
 }
 
 function endGame() {
-  questionPosition = 0;
-clearInterval(timeInterval);
-var score = countDown;
-location.href = "./score.html";
-document.querySelector("#score").textContent = score;
-console.log("#score");
+  // questionPosition = 0;
+  
+  document.querySelector("#question").classList.add("hidden");
+  document.querySelector("#scoreCard").classList.remove("hidden");
+  // window.localStorage.setItem(score);
+  clearInterval(timeInterval);
+  var score = countDown;
+  console.log(score);
+  // document.querySelector("#score").textContent = score;
 }
+
+// location.href = "./score.html";
 
 //var showNextQuestion = function (event) {
 // event.preventDefault();
@@ -140,14 +146,12 @@ console.log("#score");
 
 // questionContainer.addEventListener("click", function (event) {
 //   var questionAnswered = event.target
-   //= event.target;
-  
-  
+//= event.target;
 
 //   if (this.textContent !== questions[questionPosition].answerText) {
 //     console.log(questions[questionPosition].answerText);
 //     // console.log(this.textContent);
-    
+
 //     console.log(questionAnswered);
 //     console.log(questionPosition);
 //   }
@@ -155,10 +159,8 @@ console.log("#score");
 //   var userAnswer = questionAnswered.dataset.textContent;
 
 //   console.log(userAnswer);
-//   
+//
 // });
-
-
 
 //function answerQuestion() {
 
