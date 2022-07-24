@@ -2,4 +2,19 @@
 
 .hidden {
     display: none;
+    
 }
+
+#wrong {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+#correct {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
