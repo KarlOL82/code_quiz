@@ -9,7 +9,9 @@ var btn1 = document.getElementById("answer2");
 var btn1 = document.getElementById("answer3");
 var btn1 = document.getElementById("answer4");
 var timeInterval;
-//var correctAnswer = questions[questionPosition].answerText;
+
+var questionPosition = 0;
+
 
 var questions = [
   {
@@ -66,12 +68,13 @@ function startTimer() {
       endGame();
     } else {
       countDown -= 1;
-      document.querySelector("#timer").innerHTML =("Timer: ") + countDown;
+      document.querySelector("#timer").innerHTML = "Timer: " + countDown;
     }
   }, 1000);
 }
 
 function showQuestion() {
+  // var questionText;
   document.querySelector("#questionText").textContent =
     questions[questionPosition].questionText;
   document.querySelector("#answer1").textContent =
@@ -88,18 +91,19 @@ function showQuestion() {
   document.querySelector("#answer4").addEventListener("click", checkAnswer);
 }
 
-function checkAnswer() {
+function checkAnswer(event) {
   if (!questionAnswered == "button") return;
   var questionAnswered = this.textContent;
+  var correctAnswer = questions[questionPosition].answerText;
   console.log(this.textContent);
-  if (this.textContent !== questions[questionPosition].answerText) {
+  if (this.textContent !== correctAnswer) {
     countDown -= 15;
-    console.log("Wrong!");
+    // console.log(answerText);
     document.querySelector("#wrong").classList.remove("hidden");
     document.querySelector("#correct").classList.add("hidden");
     showNextQuestion();
   } else {
-    console.log("Correct!");
+    // console.log("Correct!");
     document.querySelector("#correct").classList.remove("hidden");
     document.querySelector("#wrong").classList.add("hidden");
     showNextQuestion();
@@ -112,22 +116,27 @@ function showNextQuestion() {
     questionDisplay++;
     questionPosition++;
     showQuestion();
-  } else if (questionPosition >= questions.length) {
-    endGame(); 
+  } else {
+    endGame();
   }
 }
 
-function endGame() {
-  // questionPosition = 0;
-  
+function endGame(event) {
+  questionPosition = 0;
+
   document.querySelector("#question").classList.add("hidden");
   document.querySelector("#scoreCard").classList.remove("hidden");
-  // window.localStorage.setItem(score);
+
   clearInterval(timeInterval);
-  var score = countDown;
-  console.log(score);
-  // document.querySelector("#score").textContent = score;
 }
+
+document.querySelector("#scoreCard")
+  .addEventListener("submit", function (event) {
+    var initsEl = event.target;
+    var score = countDown;
+    console.log(initsEl);
+    document.querySelector("#score").innerHTML = initsEl + ": " + score;
+  });
 
 // location.href = "./score.html";
 

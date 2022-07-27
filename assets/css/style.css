@@ -64,3 +64,19 @@ body {
     text-align: center;
     font-size: 1.5rem;
 }
+
+#highScore {
+    text-align: center;
+    padding: 30px;
+    font-size: 2.5rem;
+    
+}
+#score {
+text-align: center;
+padding: 30px;
+font-size: 2rem;
+}
+
+#backBtn {
+text-align: center;
+}
