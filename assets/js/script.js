@@ -158,9 +158,7 @@ document.querySelector("#scoreCard")
 //     var initsEl = event.target;
 //     var score = countDown;
 //     console.log(initsEl);
-//     var scoreEl = document.querySelector("#score");
-//     scoreEl.textContent = `Your Score is: " + ${score}`;
-//   });
+    
  var userInputEl = document.querySelector("#fname");
 
 function saveUserInfo( event){
@@ -178,11 +176,17 @@ function saveUserInfo( event){
 
    window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
    var userData = window.localStorage.getItem("nameScore");
-   console.log(JSON.parse(userData));
-   document.querySelector("#score").innerHTML = userData
+   JSON.parse(userData);
+   nameScore.push(userData);
+
+  //  var userDisplay = JSON.stringify(nameScore);
+  //  var scoreEl = document.querySelector("#score");
+  //   scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
+  ;
    
    window.location.href = "./score.html";
    
+ }  
 // creat an object
 // tak whatever in ur local stogare //parse
 // push new obj in ur array
@@ -192,7 +196,7 @@ function saveUserInfo( event){
 
 
   
- }
+ 
 
 
 // location.href = "./score.html";
