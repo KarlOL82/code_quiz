@@ -1,4 +1,4 @@
-var countDown = 60;
+var countDown = 160;
 var timeDisplay = document.getElementById("timer");
 var score = 0;
 var startButton = document.getElementById("#startButton");
@@ -52,6 +52,8 @@ var questions = [
   },
 ];
 var currentQuestion = questions[questionPosition];
+
+
 document.querySelector("#startButton").addEventListener("click", startGame);
 
 function startGame() {
@@ -65,6 +67,7 @@ function startGame() {
 function startTimer() {
   timeInterval = setInterval(function () {
     if (countDown <= 0) {
+      console.log("Calling nd game");
       endGame();
     } else {
       countDown -= 1;
@@ -75,6 +78,7 @@ function startTimer() {
 
 function showQuestion() {
   // var questionText;
+
   document.querySelector("#questionText").textContent =
     questions[questionPosition].questionText;
   document.querySelector("#answer1").textContent =
@@ -97,46 +101,99 @@ function checkAnswer(event) {
   var correctAnswer = questions[questionPosition].answerText;
   console.log(this.textContent);
   if (this.textContent !== correctAnswer) {
-    countDown -= 15;
+    if( countDown >= 15 ){
+     countDown -= 15;
     // console.log(answerText);
     document.querySelector("#wrong").classList.remove("hidden");
     document.querySelector("#correct").classList.add("hidden");
-    showNextQuestion();
+    questionDisplay++;
+    questionPosition++;
+    showNextQuestion();}
+  else{
+    console.log("calling end game when time is up");
+    endGame();
+  }
   } else {
     // console.log("Correct!");
     document.querySelector("#correct").classList.remove("hidden");
     document.querySelector("#wrong").classList.add("hidden");
+    questionDisplay++;
+    questionPosition++;
     showNextQuestion();
   }
 }
 
 function showNextQuestion() {
   // for (var i = 0; i < questions.length; i++)
-  if (questionPosition < questions.length) {
-    questionDisplay++;
-    questionPosition++;
+  console.log("In showque next");
+  console.log(questions.length);
+  if(questionPosition < questions.length) {
+
+    console.log(questionPosition);
+ 
     showQuestion();
+    // questionDisplay++;
+    // questionPosition++;
   } else {
+    clearInterval(timeInterval);
+    console.log("val of que pos",questionPosition);
+    console.log("Val of countdown",countDown);
     endGame();
   }
 }
 
 function endGame(event) {
+  console.log("In end Game");
   questionPosition = 0;
 
   document.querySelector("#question").classList.add("hidden");
   document.querySelector("#scoreCard").classList.remove("hidden");
 
   clearInterval(timeInterval);
+    // saveUserInfo();
 }
 
 document.querySelector("#scoreCard")
-  .addEventListener("submit", function (event) {
-    var initsEl = event.target;
-    var score = countDown;
-    console.log(initsEl);
-    document.querySelector("#score").innerHTML = initsEl + ": " + score;
-  });
+   .addEventListener("submit", saveUserInfo);
+//     var initsEl = event.target;
+//     var score = countDown;
+//     console.log(initsEl);
+//     var scoreEl = document.querySelector("#score");
+//     scoreEl.textContent = `Your Score is: " + ${score}`;
+//   });
+ var userInputEl = document.querySelector("#fname");
+
+function saveUserInfo( event){
+
+   event.preventDefault();
+   var userName = userInputEl.value
+   var score = countDown;
+
+   var nameScore = [
+    {
+      name: userName,
+      score: score,
+    },
+   ];
+
+   window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
+   var userData = window.localStorage.getItem("nameScore");
+   console.log(JSON.parse(userData));
+   document.querySelector("#score").innerHTML = userData
+   
+   window.location.href = "./score.html";
+   
+// creat an object
+// tak whatever in ur local stogare //parse
+// push new obj in ur array
+// strinfigy
+// move to ur high score page
+   
+
+
+  
+ }
+
 
 // location.href = "./score.html";
 
