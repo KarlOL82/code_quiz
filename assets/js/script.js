@@ -1,4 +1,4 @@
-var countDown = 160;
+var countDown = 60;
 var timeDisplay = document.getElementById("timer");
 var score = 0;
 var startButton = document.getElementById("#startButton");
@@ -158,22 +158,25 @@ function saveUserInfo(event) {
   ];
 
   window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
-  renderScore();
-  console.log(nameScore);
+  location.href = "./score.html";
+  // renderScore();
+  // console.log(nameScore);
 }
 
-function renderScore() {
-  var scoreEl = document.querySelector("#score");
-  var userData = JSON.parse(localStorage.getItem("nameScore"));
-  var userDisplay = JSON.stringify("nameScore");
-  if (userData !== null) {
-    scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
-  } else {
-    return;
-  }
+// function renderScore(event) {
+//   event.preventDefault();
+//   var scoreEl = document.querySelector("#score");
+//   var userData = JSON.parse(localStorage.getItem("nameScore"));
+//   var userDisplay = JSON.stringify("nameScore");
+//   window.location.href = "./score.html";
+//   if (userData !== null) {
+//     scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
+//   } else {
+//     return;
+//   }
 
-  window.location.href = "./score.html";
-}
+  
+// }
 
 //  var scoreEl = document.querySelector("#score");
 //   scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
@@ -187,7 +190,7 @@ function renderScore() {
 // move to ur high score page
 //  console.log(nameScore);
 
-// location.href = "./score.html";
+// 
 
 //var showNextQuestion = function (event) {
 // event.preventDefault();
