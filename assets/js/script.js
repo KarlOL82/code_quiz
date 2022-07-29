@@ -12,7 +12,6 @@ var timeInterval;
 
 var questionPosition = 0;
 
-
 var questions = [
   {
     questionText: "Which of the following is NOT a data type in Javascript?",
@@ -53,7 +52,6 @@ var questions = [
 ];
 var currentQuestion = questions[questionPosition];
 
-
 document.querySelector("#startButton").addEventListener("click", startGame);
 
 function startGame() {
@@ -67,7 +65,6 @@ function startGame() {
 function startTimer() {
   timeInterval = setInterval(function () {
     if (countDown <= 0) {
-      console.log("Calling nd game");
       endGame();
     } else {
       countDown -= 1;
@@ -99,20 +96,19 @@ function checkAnswer(event) {
   if (!questionAnswered == "button") return;
   var questionAnswered = this.textContent;
   var correctAnswer = questions[questionPosition].answerText;
-  console.log(this.textContent);
+
   if (this.textContent !== correctAnswer) {
-    if( countDown >= 15 ){
-     countDown -= 15;
-    // console.log(answerText);
-    document.querySelector("#wrong").classList.remove("hidden");
-    document.querySelector("#correct").classList.add("hidden");
-    questionDisplay++;
-    questionPosition++;
-    showNextQuestion();}
-  else{
-    console.log("calling end game when time is up");
-    endGame();
-  }
+    if (countDown >= 15) {
+      countDown -= 15;
+      // console.log(answerText);
+      document.querySelector("#wrong").classList.remove("hidden");
+      document.querySelector("#correct").classList.add("hidden");
+      questionDisplay++;
+      questionPosition++;
+      showNextQuestion();
+    } else {
+      endGame();
+    }
   } else {
     // console.log("Correct!");
     document.querySelector("#correct").classList.remove("hidden");
@@ -125,79 +121,71 @@ function checkAnswer(event) {
 
 function showNextQuestion() {
   // for (var i = 0; i < questions.length; i++)
-  console.log("In showque next");
-  console.log(questions.length);
-  if(questionPosition < questions.length) {
 
-    console.log(questionPosition);
- 
+  if (questionPosition < questions.length) {
     showQuestion();
-    // questionDisplay++;
-    // questionPosition++;
   } else {
     clearInterval(timeInterval);
-    console.log("val of que pos",questionPosition);
-    console.log("Val of countdown",countDown);
+
     endGame();
   }
 }
 
 function endGame(event) {
-  console.log("In end Game");
   questionPosition = 0;
 
   document.querySelector("#question").classList.add("hidden");
   document.querySelector("#scoreCard").classList.remove("hidden");
 
   clearInterval(timeInterval);
-    // saveUserInfo();
+  // saveUserInfo();
 }
 
-document.querySelector("#scoreCard")
-   .addEventListener("submit", saveUserInfo);
-//     var initsEl = event.target;
-//     var score = countDown;
-//     console.log(initsEl);
-    
- var userInputEl = document.querySelector("#fname");
+document.querySelector("#scoreCard").addEventListener("submit", saveUserInfo);
 
-function saveUserInfo( event){
+var userInputEl = document.querySelector("#fname");
 
-   event.preventDefault();
-   var userName = userInputEl.value
-   var score = countDown;
+function saveUserInfo(event) {
+  event.preventDefault();
+  var userName = userInputEl.value;
+  var score = countDown;
 
-   var nameScore = [
+  var nameScore = [
     {
       name: userName,
       score: score,
     },
-   ];
+  ];
 
-   window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
-   var userData = window.localStorage.getItem("nameScore");
-   JSON.parse(userData);
-   nameScore.push(userData);
+  window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
+  renderScore();
+  console.log(nameScore);
+}
 
-  //  var userDisplay = JSON.stringify(nameScore);
-  //  var scoreEl = document.querySelector("#score");
-  //   scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
-  ;
-   
-   window.location.href = "./score.html";
-   
- }  
+function renderScore() {
+  var scoreEl = document.querySelector("#score");
+  var userData = JSON.parse(localStorage.getItem("nameScore"));
+  var userDisplay = JSON.stringify("nameScore");
+  if (userData !== null) {
+    scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
+  } else {
+    return;
+  }
+
+  window.location.href = "./score.html";
+}
+
+//  var scoreEl = document.querySelector("#score");
+//   scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
+// document.getElementById("player").innerHTML = userData.name
+// document.getElementById("score").innerHTML = userData.score
+// scoreEl.innerHTML = userData.score;
 // creat an object
 // tak whatever in ur local stogare //parse
 // push new obj in ur array
 // strinfigy
 // move to ur high score page
-   
-
-
-  
- 
-
+//  console.log(nameScore);
 
 // location.href = "./score.html";
 
