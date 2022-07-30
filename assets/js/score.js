@@ -1,3 +1,4 @@
+// This js file displays the score page
 var userData;
 renderScore();
 
@@ -17,9 +18,9 @@ function renderScore() {
     }
   }
 }
-
+// Event listener for button to clear the score page
 document.querySelector("#clearBtn").addEventListener("click", clearScore);
-
+// Clears the saved scores when button is clicked
 function clearScore() {
   document.querySelector(".scoreContainer").classList.add("hidden");
   window.localStorage.clear();

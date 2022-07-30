@@ -1,8 +1,12 @@
 # code_quiz
 An in-browser quiz game with multiple choice questions and a scoreboard.
 
+## Author
+- Karl  Linfeldt
+
 ## Deployed App
 -[Live Page](https://karlol82.github.io/code_quiz/index.html)
+-[Github Repo](https://github.com/KarlOL82/code_quiz)
 
 ## User Story
 As a bootcamp student,
@@ -19,5 +23,14 @@ The game is over when either the timer expires or all of the questions have been
 -CSS
 -HTML
 
+## Takeaways
+
+This was a very challenging and time-consuming project for me as a new developer. There was a great deal of trial and error which ended up being priceless and much needed practice!
+I can see how Javascript is such a powerful tool in web development as I have learned to do a great deal with it already and I haven't even scratched the surface of what can be achieved. I'm excited to implement the tools from this project in other work going forward as I feel much more comfortable with the syntax and logic than when I began.
+
+## Photos
+![Start Screen](./assets/images/startScreen.png "Start Screen")
+![Question Demo](./assets/images/questions.png "Sample Question")
+![Enter Name](./assets/images/enterName.png "Enter Username")
 
 

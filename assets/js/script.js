@@ -1,3 +1,4 @@
+// Global Variables for quiz portion
 var countDown = 60;
 var timeDisplay = document.getElementById("timer");
 var score = 0;
@@ -9,9 +10,9 @@ var btn1 = document.getElementById("answer2");
 var btn1 = document.getElementById("answer3");
 var btn1 = document.getElementById("answer4");
 var timeInterval;
-
 var questionPosition = 0;
 
+// Question array
 var questions = [
   {
     questionText: "Which of the following is NOT a data type in Javascript?",
@@ -52,8 +53,10 @@ var questions = [
 ];
 var currentQuestion = questions[questionPosition];
 
+// Event listener for the start button
 document.querySelector("#startButton").addEventListener("click", startGame);
 
+// Function to start the timer and display the first question
 function startGame() {
   questionPosition = 0;
   startTimer();
@@ -61,7 +64,7 @@ function startGame() {
   document.querySelector("#question").classList.remove("hidden");
   showQuestion();
 }
-
+// Code for timer functionality
 function startTimer() {
   timeInterval = setInterval(function () {
     if (countDown <= 0) {
@@ -73,6 +76,7 @@ function startTimer() {
   }, 1000);
 }
 
+// Display the first question and make answers clickable
 function showQuestion() {
   document.querySelector("#questionText").textContent =
     questions[questionPosition].questionText;
@@ -90,11 +94,12 @@ function showQuestion() {
   document.querySelector("#answer4").addEventListener("click", checkAnswer);
 }
 
+// Check whether the selected answer is correct or incorrect and alerts user of outcome
 function checkAnswer(event) {
   if (!questionAnswered == "button") return;
   var questionAnswered = this.textContent;
   var correctAnswer = questions[questionPosition].answerText;
-
+// Decrements timer by 15 seconds if not correct
   if (this.textContent !== correctAnswer) {
     if (countDown >= 15) {
       countDown -= 15;
@@ -115,7 +120,7 @@ function checkAnswer(event) {
     showNextQuestion();
   }
 }
-
+// Cycles through the questions array
 function showNextQuestion() {
   if (questionPosition < questions.length) {
     showQuestion();
@@ -125,7 +130,7 @@ function showNextQuestion() {
     endGame();
   }
 }
-
+// Stops the timer and displays the form to enter name to record score
 function endGame(event) {
   questionPosition = 0;
 
@@ -134,11 +139,11 @@ function endGame(event) {
 
   clearInterval(timeInterval);
 }
-
+// Form for username input
 document.querySelector("#scoreCard").addEventListener("submit", saveUserInfo);
 
 var userInputEl = document.querySelector("#fname");
-
+//Saves username and score to an array in  local storage
 function saveUserInfo(event) {
   event.preventDefault();
   var userName = userInputEl.value;
