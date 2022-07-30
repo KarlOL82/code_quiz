@@ -18,11 +18,9 @@ function renderScore() {
   }
 }
 
-document.querySelector("#clearBtn").addEventListener("click", clearScore) 
-    
-
+document.querySelector("#clearBtn").addEventListener("click", clearScore);
 
 function clearScore() {
-    document.querySelector(".scoreContainer").classList.add("hidden");
-    window.localStorage.clear();
+  document.querySelector(".scoreContainer").classList.add("hidden");
+  window.localStorage.clear();
 }
