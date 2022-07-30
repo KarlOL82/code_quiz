@@ -21,14 +21,16 @@
 //   };
 
 function renderScore() {
-    var scoreEl = document.querySelector(".score");
+    var scoreEl = document.querySelector("#scoreList");
     var userData = JSON.parse(localStorage.getItem("nameScore"));
 
     for (var i = 0; i < userData.length; i++) {
       var userDisplay = `Name: ${userData[i].name} | Score: ${userData[i].score}`;
       if (userData[i] !== null) {
-        // scoreEl.textContent = userDisplay;
-        scoreEl.textContent += `${userDisplay}`;
+        var createLi = document.createElement("li");
+        createLi.textContent = `${userDisplay}`;
+        scoreEl.appendChild(createLi);
+        // scoreEl.textContent += 
       } else {
         return;
       }

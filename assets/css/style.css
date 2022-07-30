@@ -72,9 +72,14 @@ body {
     
 }
 .score {
-padding: 30px;
+
 font-size: 2rem;
 
+}
+
+li {
+    text-align: center;
+    font-size: 2rem;
 }
 
 .scoreContainer {
