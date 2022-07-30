@@ -9,7 +9,7 @@ function renderScore(event) {
     var userDisplay = JSON.stringify("nameScore");
     window.location.href = "./score.html";
     if (userData !== null) {
-      scoreEl.textContent = `Your Score is:  + ${userDisplay}`;
+      scoreEl.textContent = `Your Score is:   ${userDisplay}`;
     } else {
       return;
     }
