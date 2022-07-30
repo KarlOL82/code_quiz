@@ -99,7 +99,7 @@ function checkAnswer(event) {
   if (!questionAnswered == "button") return;
   var questionAnswered = this.textContent;
   var correctAnswer = questions[questionPosition].answerText;
-// Decrements timer by 15 seconds if not correct
+  // Decrements timer by 15 seconds if not correct
   if (this.textContent !== correctAnswer) {
     if (countDown >= 15) {
       countDown -= 15;
@@ -149,7 +149,7 @@ function saveUserInfo(event) {
   var userName = userInputEl.value;
   var score = countDown;
   var nameScores = localStorage.getItem("nameScore");
-  console.log(nameScores);
+
   if (!nameScores) {
     nameScores = [];
   } else {
