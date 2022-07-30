@@ -71,10 +71,20 @@ body {
     font-size: 2.5rem;
     
 }
-#score {
-text-align: center;
+.score {
 padding: 30px;
 font-size: 2rem;
+
+}
+
+.scoreContainer {
+text-align: center;
+}
+
+#scoreList {
+display: inline-block;
+text-align: left;
+list-style: none;
 }
 
 #backBtn {
