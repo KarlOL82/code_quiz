@@ -74,8 +74,6 @@ function startTimer() {
 }
 
 function showQuestion() {
-  
-
   document.querySelector("#questionText").textContent =
     questions[questionPosition].questionText;
   document.querySelector("#answer1").textContent =
@@ -100,7 +98,7 @@ function checkAnswer(event) {
   if (this.textContent !== correctAnswer) {
     if (countDown >= 15) {
       countDown -= 15;
-      
+
       document.querySelector("#wrong").classList.remove("hidden");
       document.querySelector("#correct").classList.add("hidden");
       questionDisplay++;
@@ -110,7 +108,6 @@ function checkAnswer(event) {
       endGame();
     }
   } else {
-    
     document.querySelector("#correct").classList.remove("hidden");
     document.querySelector("#wrong").classList.add("hidden");
     questionDisplay++;
@@ -120,8 +117,6 @@ function checkAnswer(event) {
 }
 
 function showNextQuestion() {
-  
-
   if (questionPosition < questions.length) {
     showQuestion();
   } else {
@@ -138,7 +133,6 @@ function endGame(event) {
   document.querySelector("#scoreCard").classList.remove("hidden");
 
   clearInterval(timeInterval);
-  
 }
 
 document.querySelector("#scoreCard").addEventListener("submit", saveUserInfo);
@@ -149,16 +143,19 @@ function saveUserInfo(event) {
   event.preventDefault();
   var userName = userInputEl.value;
   var score = countDown;
+  var nameScores = localStorage.getItem("nameScore");
+  console.log(nameScores);
+  if (!nameScores) {
+    nameScores = [];
+  } else {
+    nameScores = JSON.parse(nameScores);
+  }
+  var nameScore = {
+    name: userName,
+    score: score,
+  };
+  nameScores.push(nameScore);
 
-  var nameScore = [
-    {
-      name: userName,
-      score: score,
-    },
-  ];
-
-  window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
+  window.localStorage.setItem("nameScore", JSON.stringify(nameScores));
   location.href = "./score.html";
-  
 }
-
