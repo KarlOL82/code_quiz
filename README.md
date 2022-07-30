@@ -5,7 +5,8 @@ An in-browser quiz game with multiple choice questions and a scoreboard.
 - Karl  Linfeldt
 
 ## Deployed App
--[Live Page](https://karlol82.github.io/code_quiz/index.html)
+-[Live Page](https://karlol82.github.io/code_quiz/index.html)  
+
 -[Github Repo](https://github.com/KarlOL82/code_quiz)
 
 ## User Story
