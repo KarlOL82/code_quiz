@@ -2,7 +2,7 @@
 An in-browser quiz game with multiple choice questions and a scoreboard.
 
 ## Deployed App
--[Live Page]
+-[Live Page](https://karlol82.github.io/code_quiz/index.html)
 
 ## User Story
 As a bootcamp student,
