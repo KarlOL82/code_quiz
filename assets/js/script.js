@@ -74,7 +74,7 @@ function startTimer() {
 }
 
 function showQuestion() {
-  // var questionText;
+  
 
   document.querySelector("#questionText").textContent =
     questions[questionPosition].questionText;
@@ -100,7 +100,7 @@ function checkAnswer(event) {
   if (this.textContent !== correctAnswer) {
     if (countDown >= 15) {
       countDown -= 15;
-      // console.log(answerText);
+      
       document.querySelector("#wrong").classList.remove("hidden");
       document.querySelector("#correct").classList.add("hidden");
       questionDisplay++;
@@ -110,7 +110,7 @@ function checkAnswer(event) {
       endGame();
     }
   } else {
-    // console.log("Correct!");
+    
     document.querySelector("#correct").classList.remove("hidden");
     document.querySelector("#wrong").classList.add("hidden");
     questionDisplay++;
@@ -120,7 +120,7 @@ function checkAnswer(event) {
 }
 
 function showNextQuestion() {
-  // for (var i = 0; i < questions.length; i++)
+  
 
   if (questionPosition < questions.length) {
     showQuestion();
@@ -138,7 +138,7 @@ function endGame(event) {
   document.querySelector("#scoreCard").classList.remove("hidden");
 
   clearInterval(timeInterval);
-  // saveUserInfo();
+  
 }
 
 document.querySelector("#scoreCard").addEventListener("submit", saveUserInfo);
@@ -159,81 +159,6 @@ function saveUserInfo(event) {
 
   window.localStorage.setItem("nameScore", JSON.stringify(nameScore));
   location.href = "./score.html";
-  // renderScore();
-  // console.log(nameScore);
+  
 }
 
-// function renderScore(event) {
-//   event.preventDefault();
-//   var scoreEl = document.querySelector("#score");
-//   var userData = JSON.parse(localStorage.getItem("nameScore"));
-//   var userDisplay = JSON.stringify("nameScore");
-//   window.location.href = "./score.html";
-//   if (userData !== null) {
-//     scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
-//   } else {
-//     return;
-//   }
-
-  
-// }
-
-//  var scoreEl = document.querySelector("#score");
-//   scoreEl.textContent = `Your Score is: " + ${userDisplay}`;
-// document.getElementById("player").innerHTML = userData.name
-// document.getElementById("score").innerHTML = userData.score
-// scoreEl.innerHTML = userData.score;
-// creat an object
-// tak whatever in ur local stogare //parse
-// push new obj in ur array
-// strinfigy
-// move to ur high score page
-//  console.log(nameScore);
-
-// 
-
-//var showNextQuestion = function (event) {
-// event.preventDefault();
-//}
-
-//document.querySelector("#answer1").addEventListener("click",answerQuestion);
-//document.querySelector("#answer2").addEventListener("click",answerQuestion);
-//document.querySelector("#answer3").addEventListener("click",answerQuestion);
-//document.querySelector("#answer4").addEventListener("click",answerQuestion);
-
-// attach event listener to each answer button
-
-// var questionContainer = document.querySelector("#question");
-
-// questionContainer.addEventListener("click", function (event) {
-//   var questionAnswered = event.target
-//= event.target;
-
-//   if (this.textContent !== questions[questionPosition].answerText) {
-//     console.log(questions[questionPosition].answerText);
-//     // console.log(this.textContent);
-
-//     console.log(questionAnswered);
-//     console.log(questionPosition);
-//   }
-
-//   var userAnswer = questionAnswered.dataset.textContent;
-
-//   console.log(userAnswer);
-//
-// });
-
-//function answerQuestion() {
-
-//var questionAnswered = this.getAttribute("data-index");
-//var userAnswer = questionAnswered.dataset.index;
-//};
-
-// grab text from element "event.target.textContent"
-
-// stringify name and scorekey/value (score = )
-//var data = [
-//   {initials:"Initials", score:"Score"}
-//]
-
-//localStorage.getItem(data)

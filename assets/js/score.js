@@ -1,38 +1,28 @@
- 
- var userData;
- renderScore();
-
-// function renderScore(event) {
-//     // location.href = "./score.html";
-//     var scoreEl = document.querySelector("#score");
-//     var userData = JSON.parse(localStorage.getItem("nameScore"));
-//     var userDisplay = JSON.stringify("nameScore");
-//     window.location.href = "./score.html";
-//     if (userData !== null) {
-//       scoreEl.textContent = `Your Score is:   ${userDisplay}`;
-//         // scoreEl.textContent = userData.name;
-//         // scoreEl.textContent = userData.score;
-
-//     } else {
-//       return;
-//     }
-  
-    
-//   };
+var userData;
+renderScore();
 
 function renderScore() {
-    var scoreEl = document.querySelector("#scoreList");
-    var userData = JSON.parse(localStorage.getItem("nameScore"));
+  var scoreEl = document.querySelector("#scoreList");
+  var userData = JSON.parse(localStorage.getItem("nameScore"));
+  document.querySelector("#scoreList").classList.remove("hidden");
 
-    for (var i = 0; i < userData.length; i++) {
-      var userDisplay = `Name: ${userData[i].name} | Score: ${userData[i].score}`;
-      if (userData[i] !== null) {
-        var createLi = document.createElement("li");
-        createLi.textContent = `${userDisplay}`;
-        scoreEl.appendChild(createLi);
-        // scoreEl.textContent += 
-      } else {
-        return;
-      }
+  for (var i = 0; i < userData.length; i++) {
+    var userDisplay = `Name: ${userData[i].name} | Score: ${userData[i].score}`;
+    if (userData[i] !== null) {
+      var createLi = document.createElement("li");
+      createLi.textContent = `${userDisplay}`;
+      scoreEl.appendChild(createLi);
+    } else {
+      return;
     }
-}  
+  }
+}
+
+document.querySelector("#clearBtn").addEventListener("click", clearScore) 
+    
+
+
+function clearScore() {
+    document.querySelector(".scoreContainer").classList.add("hidden");
+    window.localStorage.clear();
+}
